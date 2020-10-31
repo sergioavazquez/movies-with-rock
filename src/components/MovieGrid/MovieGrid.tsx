@@ -21,6 +21,7 @@ const MovieGrid: React.FC<Props> = ({
   ratingFilterClick,
 }) => {
   const apiConfig = useSelector(selectApiConfig);
+
   const renderMovies = () => {
     if (movies?.length === 0) {
       return <h2>Sorry, no results...</h2>;
@@ -33,7 +34,13 @@ const MovieGrid: React.FC<Props> = ({
         imgSrc = `${apiConfig?.images.base_url}${imgSize}${m.poster_path}`;
       }
       return (
-        <button className={css[`${block}__card`]} key={m.id}>
+        <button
+          className={css[`${block}__card`]}
+          key={m.id}
+          onClick={() => {
+            onMovieClick(m);
+          }}
+        >
           <img src={imgSrc} alt={m.title} />
         </button>
       );

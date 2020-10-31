@@ -1,0 +1,108 @@
+@import "../../utils/scss/index.scss";
+
+.movie-details {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba($color: #000000, $alpha: 0.5);
+
+  &__card {
+    position: relative;
+    top: 10vh;
+    overflow-y: auto;
+    width: calc(100% - (#{$mobile-margin} * 2));
+    max-width: 768px;
+    max-height: 80vh;
+    border-radius: 5px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    padding: $mobile-spacing;
+    margin: 0 auto;
+    box-sizing: border-box;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -1px rgba(0, 0, 0, 0.5);
+
+    @include for-size(tablet) {
+      width: calc(100% - (#{$tablet-margin} * 2));
+      margin: $tablet-spacing auto;
+    }
+
+    @include for-size(desktop) {
+      width: calc(100% - (#{$desktop-margin-sm} * 2));
+      margin: $desktop-spacing auto;
+    }
+
+    @include for-size(desktop-lg) {
+      width: calc(100% - (#{$desktop-margin-lg} * 2));
+    }
+
+    &__close {
+      position: fixed;
+      top: $mobile-margin;
+      right: $mobile-margin;
+      @include for-size(tablet) {
+        top: $tablet-margin;
+        right: $tablet-margin;
+      }
+
+      @include for-size(desktop) {
+        top: $tablet-margin;
+        right: $desktop-margin-sm;
+      }
+
+      > svg {
+        fill: white;
+        height: 30px;
+        width: 30px;
+        @include for-size(tablet) {
+          height: 36px;
+          width: 36px;
+        }
+        @include for-size(desktop) {
+          height: 48px;
+          width: 48px;
+        }
+      }
+    }
+
+    > img {
+      object-fit: cover;
+      height: 30vh;
+      object-position: center;
+    }
+
+    &__description {
+      padding: $mobile-spacing 0;
+      color: $grey-2;
+      font-weight: 100;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      &__row {
+        display: flex;
+        width: 100%;
+        padding: 5px 0;
+        padding-left: 5px;
+        &__label {
+          font-weight: 400;
+        }
+        &__value {
+          padding-left: 10px;
+          padding-right: 10px;
+          max-width: 500px;
+          &-title {
+            font-weight: 900;
+            padding-right: 10px;
+          }
+          &-no-pad {
+            padding-left: 0px;
+            padding-right: 10px;
+          }
+        }
+      }
+    }
+  }
+}

@@ -2,8 +2,10 @@ import React, { useEffect, useState, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Header from "components/Header";
 import MovieGrid from "components/MovieGrid";
+import MovieDetails from "components/MovieDetails";
 import { selectMovieList } from "redux/app/selectors";
 import { Actions } from "redux/app/actions";
+import { Movie } from "models/moviedb";
 import { MovieApiEndpoints, MovieFetchRequest } from "models/api";
 import { RatingFilterState } from "components/RatingFilter";
 
@@ -17,13 +19,14 @@ const SinglePageApp = () => {
     active: false,
     stars: 5,
   });
+  const [movieDetail, setMovieDetail] = useState<Movie | null>(null);
   const [movieQuery, setMovieQuery] = useState("");
   const dispatch = useDispatch();
   const movieList = useSelector(selectMovieList);
 
   useEffect(() => {
     let request: MovieFetchRequest = { endpoint: MovieApiEndpoints.DISCOVER };
-    if (movieQuery.length >= 3) {
+    if (movieQuery.length >= 1) {
       request = {
         endpoint: MovieApiEndpoints.SEARCH,
         query: movieQuery,
@@ -48,10 +51,11 @@ const SinglePageApp = () => {
       <Header search={setMovieQuery} />
       <MovieGrid
         movies={fetchMovies()}
-        onMovieClick={() => {}}
+        onMovieClick={setMovieDetail}
         ratingFilterStatus={ratingFilterStatus}
         ratingFilterClick={setRatingFilterStatus}
       />
+      <MovieDetails movie={movieDetail} close={() => setMovieDetail(null)} />
     </div>
   );
 };

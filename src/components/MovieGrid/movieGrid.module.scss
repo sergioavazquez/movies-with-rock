@@ -1,9 +1,5 @@
 @import "../../utils/scss/index.scss";
 
-$mobile-spacing: 20px;
-$tablet-spacing: 40px;
-$desktop-spacing: 60px;
-
 .movie-grid {
   width: calc(100% - (#{$mobile-margin} * 2));
   display: flex;
@@ -62,7 +58,7 @@ $desktop-spacing: 60px;
     }
 
     > img {
-      background-size: cover;
+      object-fit: cover;
       width: 100%;
       box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
         0 2px 4px -1px rgba(0, 0, 0, 0.5);
