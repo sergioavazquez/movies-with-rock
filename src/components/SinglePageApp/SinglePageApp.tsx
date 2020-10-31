@@ -25,11 +25,15 @@ const SinglePageApp = () => {
   const movieList = useSelector(selectMovieList);
 
   useEffect(() => {
-    let request: MovieFetchRequest = { endpoint: MovieApiEndpoints.DISCOVER };
+    let request: MovieFetchRequest = {
+      endpoint: MovieApiEndpoints.DISCOVER,
+      sortBy: "popularity.desc",
+    };
     if (movieQuery.length >= 1) {
       request = {
         endpoint: MovieApiEndpoints.SEARCH,
         query: movieQuery,
+        sortBy: "popularity.desc",
       };
     }
     dispatch(Actions.fetchStart(request));

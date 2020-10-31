@@ -7,3 +7,6 @@ export const selectMovieList = (state: GlobalState): MovieList | null =>
 
 export const selectApiConfig = (state: GlobalState): ApiConfig | null =>
   state.appReducer.apiConfig;
+
+export const selectIsLoading = (state: GlobalState): boolean =>
+  state.appReducer.isLoading;

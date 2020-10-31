@@ -1,0 +1,23 @@
+.smooth-fade {
+  &-enter {
+    opacity: 0;
+  }
+  &-enter-active {
+    transition: opacity 600ms ease;
+    opacity: 1;
+    will-change: opacity;
+    transform: translateZ(0); // For Firefox
+  }
+  &-enter-done {
+    opacity: 1;
+  }
+  &-exit {
+    opacity: 1;
+    will-change: opacity;
+    transform: translateZ(0); // For Firefox
+  }
+  &-exit-active {
+    transition: opacity 600ms ease;
+    opacity: 0;
+  }
+}

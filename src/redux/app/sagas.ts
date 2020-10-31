@@ -1,5 +1,5 @@
 import { SagaIterator } from "redux-saga";
-import { takeLeading, call, put, select } from "redux-saga/effects";
+import { call, put, select, throttle } from "redux-saga/effects";
 import { Types, FetchStartAction, Actions } from "./actions";
 import { fetchTmdbMovies, fetchTmdbConfig } from "api/movies";
 import { selectApiConfig } from "./selectors";
@@ -13,17 +13,19 @@ const handleApiConfigFetch = function* (): SagaIterator {
 
 const handleMovieFetch = function* (action: FetchStartAction): SagaIterator {
   const apiConfig = yield select(selectApiConfig);
+  yield put(Actions.setLoading(true));
   if (!apiConfig) {
     yield call(handleApiConfigFetch);
   }
   const apiResponse = yield call(fetchTmdbMovies, action.movieFetchRequest);
   if (apiResponse.ok) {
     yield put(Actions.fetchSuccess(apiResponse.data));
+    yield put(Actions.setLoading(false));
   }
 };
 
 const appSaga = function* (): SagaIterator {
-  yield takeLeading(Types.FETCH_START, handleMovieFetch);
+  yield throttle(250, Types.FETCH_START, handleMovieFetch);
 };
 
 export { appSaga };

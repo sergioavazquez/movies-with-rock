@@ -11,9 +11,7 @@ interface Props {
 
 const Header: React.FC<Props> = ({ search }) => {
   const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
-    if (e.target.value) {
-      search(e.target.value);
-    }
+    search(encodeURI(e.target.value));
   };
 
   return (
