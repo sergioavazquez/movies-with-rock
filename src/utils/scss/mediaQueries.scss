@@ -1,0 +1,87 @@
+@mixin retina-mq($rule) {
+  @media (#{$rule}) and (-webkit-min-device-pixel-ratio: 2),
+  (#{$rule}) and (   min--moz-device-pixel-ratio: 2),
+  (#{$rule}) and (   -moz-min-device-pixel-ratio: 2),
+  (#{$rule}) and (     -o-min-device-pixel-ratio: 2/1),
+  (#{$rule}) and (        min-device-pixel-ratio: 2),
+  (#{$rule}) and (                min-resolution: 192dpi),
+  (#{$rule}) and (                min-resolution: 2dppx) {
+    @content;
+  }
+}
+
+// $breakpoints are defined in vars.scss
+@mixin for-size($breakpoint, $direction: up, $pr: false) {
+  // If the breakpoint exists in the map.
+  @if map-has-key($breakpoints, $breakpoint) {
+    // Get the breakpoint value.
+    $breakpoint-value: map-get($breakpoints, $breakpoint);
+
+    // Determine the direction and then write the media query.
+    @if $direction == up {
+      @if $pr {
+        @include retina-mq("min-width: #{$breakpoint-value}") {
+          @content;
+        }
+      } @else {
+        @media (min-width: $breakpoint-value) {
+          @content;
+        }
+      }
+    } @else if $direction == down {
+      @if $pr {
+        @include retina-mq("max-width: #{$breakpoint-value}") {
+          @content;
+        }
+      } @else {
+        @media (max-width: $breakpoint-value) {
+          @content;
+        }
+      }
+    }
+  }
+  // If the breakpoint doesn't exist in the map, pass a manual breakpoint
+  @else {
+    @if $direction == up {
+      @if $pr {
+        @include retina-mq("min-width: #{$breakpoint}") {
+          @content;
+        }
+      } @else {
+        @media (min-width: $breakpoint) {
+          @content;
+        }
+      }
+    } @else if $direction == down {
+      @if $pr {
+        @include retina-mq("max-width: #{$breakpoint}") {
+          @content;
+        }
+      } @else {
+        @media (max-width: $breakpoint) {
+          @content;
+        }
+      }
+    }
+  }
+}
+
+@mixin between-sizes($lower, $upper) {
+  // If both the lower and upper breakpoints exist in the map.
+  @if map-has-key($breakpoints, $lower) and map-has-key($breakpoints, $upper) {
+    // Get the lower and upper breakpoints.
+    $lower-breakpoint: map-get($breakpoints, $lower);
+    $upper-breakpoint: map-get($breakpoints, $upper);
+
+    // Write the media query.
+    @media (min-width: $lower-breakpoint) and (max-width: ($upper-breakpoint)) {
+      @content;
+    }
+  }
+  // If the breakpoints don't exist, allow manual breakpoints
+  @else {
+    @media (min-width: $lower) and (max-width: ($upper)) {
+      @content;
+    }
+  }
+}

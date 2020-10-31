@@ -7,6 +7,7 @@ import { ErrorScreen } from "components/notifications";
 import { Config } from "models/system";
 import { GlobalState } from "redux/reducers";
 import Routes from "routes";
+import "App.scss";
 
 class App extends Component<AppProps, {}> {
   static defaultProps = { appReducer: {} };

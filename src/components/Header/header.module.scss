@@ -1,0 +1,50 @@
+@import "../../utils/scss/index.scss";
+
+.header {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  background-color: white;
+  position: relative;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: 0 $mobile-margin;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.5);
+
+  @include for-size(tablet) {
+    padding: 0 $tablet-margin;
+  }
+
+  @include for-size(desktop) {
+    padding: 0 $desktop-margin-sm;
+  }
+
+  @include for-size(desktop-lg) {
+    padding: 0 $desktop-margin-lg;
+  }
+
+  &__search {
+    position: relative;
+    height: 40px;
+    width: 50%;
+    max-width: 250px;
+    align-items: center;
+    display: flex;
+
+    svg {
+      position: absolute;
+      right: 10px;
+      fill: black;
+    }
+
+    input {
+      width: 100%;
+      height: 26px;
+      padding-left: 10px;
+      font-family: $primary-font;
+      font-weight: 100;
+    }
+  }
+}

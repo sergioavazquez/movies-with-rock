@@ -1,24 +1,8 @@
-import { MovieList } from "models/moviedb";
+import { MovieFetchRequest, ApiResponse } from "models/api";
 
-const api_key = "af579b9b45873e1e05235c7b9bc10266";
+const bearer_token =
+  "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhZjU3OWI5YjQ1ODczZTFlMDUyMzVjN2I5YmMxMDI2NiIsInN1YiI6IjVmOTcxODc4NjRkZTM1MDAzOGYxY2FjOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.VWvLdS8hwH5Rw-dznQuV0OgnBdhflVXdGumNT_CbK6I";
 const api_root = "https://api.themoviedb.org/3/";
-
-export enum MovieApiEndpoints {
-  DISCOVER = "DISCOVER",
-  SEARCH = "SEARCH",
-}
-
-export interface MovieFetchRequest {
-  endpoint: MovieApiEndpoints;
-  query?: string;
-  sortBy?: string;
-}
-
-export interface ApiResponse {
-  status: number;
-  ok: boolean;
-  data: MovieList;
-}
 
 const catchError = (response: Response) => {
   return response.json().catch(() => {
@@ -28,7 +12,7 @@ const catchError = (response: Response) => {
 
 const parseJSON = (response: Response): Promise<ApiResponse> => {
   return new Promise((resolve) =>
-    catchError(response).then((json: MovieList) =>
+    catchError(response).then((json: any) =>
       resolve({
         status: response.status,
         ok: response.ok,
@@ -39,16 +23,13 @@ const parseJSON = (response: Response): Promise<ApiResponse> => {
 };
 
 export const apiCall = async (
-  movieFetchRequest: MovieFetchRequest
+  requestUrl: string,
+  token: string
 ): Promise<ApiResponse> => {
-  const endpoint = movieFetchRequest.endpoint.toLowerCase();
-  let requestUrl = `${api_root}${endpoint}/movie?api_key=${api_key}`;
-  if (movieFetchRequest.sortBy) {
-    requestUrl = `${requestUrl}&sort_by=${movieFetchRequest.sortBy}`;
-  }
   const headers = new Headers();
   headers.append("content-type", "application/json");
   headers.append("Accept", "application/json");
+  headers.append("Authorization", `Bearer ${token}`);
 
   const config: RequestInit = {
     method: "GET",
@@ -60,5 +41,26 @@ export const apiCall = async (
 
   const response = await fetch(api_request);
   const apiResponse = await parseJSON(response);
+  return apiResponse;
+};
+
+export const fetchTmdbMovies = async (
+  movieFetchRequest: MovieFetchRequest
+): Promise<ApiResponse> => {
+  const endpoint = movieFetchRequest.endpoint.toLowerCase();
+  let requestUrl = `${api_root}${endpoint}/movie?`;
+  if (movieFetchRequest.sortBy) {
+    requestUrl = `${requestUrl}&sort_by=${movieFetchRequest.sortBy}`;
+  }
+  if (movieFetchRequest.query) {
+    requestUrl = `${requestUrl}&query=${movieFetchRequest.query}`;
+  }
+  const apiResponse = await apiCall(requestUrl, bearer_token);
+  return apiResponse;
+};
+
+export const fetchTmdbConfig = async (): Promise<ApiResponse> => {
+  const requestUrl = `${api_root}/configuration`;
+  const apiResponse = await apiCall(requestUrl, bearer_token);
   return apiResponse;
 };

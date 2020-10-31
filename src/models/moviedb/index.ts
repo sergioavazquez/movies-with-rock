@@ -21,3 +21,16 @@ export interface MovieList {
   total_pages: number;
   results: [Movie];
 }
+
+export interface ApiConfig {
+  change_keys: string[];
+  images: {
+    backdrop_sizes: string[];
+    base_url: string;
+    secure_base_url: string;
+    logo_sizes: string[];
+    profile_sizes: string[];
+    poster_sizes: string[];
+    still_sizes: string[];
+  };
+}

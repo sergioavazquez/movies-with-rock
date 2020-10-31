@@ -1,35 +1,48 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { ErrorNotification } from "models/notifications";
-import css from "./spa.module.scss";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import Header from "components/Header";
+import MovieGrid from "components/MovieGrid";
+import { selectMovieList } from "redux/app/selectors";
+import { Actions } from "redux/app/actions";
+import { MovieApiEndpoints, MovieFetchRequest } from "models/api";
 
+import css from "./spa.module.scss";
 const block = "spa";
 
-interface ErrorNotificationsProps {
-  error: ErrorNotification;
-}
+const SinglePageApp = () => {
+  const [ratingFilter, setRatingFilter] = useState({ active: false, stars: 5 });
+  const [movieQuery, setMovieQuery] = useState("");
+  const dispatch = useDispatch();
+  const movieList = useSelector(selectMovieList);
 
-const SinglePageApp = ({ error }: ErrorNotificationsProps) => {
+  useEffect(() => {
+    let request: MovieFetchRequest = { endpoint: MovieApiEndpoints.DISCOVER };
+    if (movieQuery.length >= 3) {
+      request = {
+        endpoint: MovieApiEndpoints.SEARCH,
+        query: movieQuery,
+      };
+    }
+    dispatch(Actions.fetchStart(request));
+  }, [dispatch, movieQuery]);
+
+  const fetchMovies = () => {
+    if (ratingFilter.active) {
+      return movieList?.results.filter(
+        (m) =>
+          m.vote_average <= ratingFilter.stars * 2 &&
+          m.vote_average >= (ratingFilter.stars - 1) * 2
+      );
+    }
+    return movieList?.results;
+  };
+
   return (
-    <div className={css[`${block}__main`]}>
-      <h1>Hello!!</h1>
-      <h2>{error.errorMsg}</h2>
+    <div className={css[`${block}`]}>
+      <Header search={setMovieQuery} />
+      <MovieGrid movies={fetchMovies()} onMovieClick={() => {}} />
     </div>
   );
-};
-
-SinglePageApp.defaultProps = {
-  error: {
-    code: 400,
-    errorMsg: "Oops",
-  },
-};
-
-SinglePageApp.propTypes = {
-  error: PropTypes.shape({
-    code: PropTypes.number,
-    errorMsg: PropTypes.string,
-  }),
 };
 
 export default SinglePageApp;

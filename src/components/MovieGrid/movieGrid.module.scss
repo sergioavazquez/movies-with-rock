@@ -1,0 +1,70 @@
+@import "../../utils/scss/index.scss";
+
+$mobile-spacing: 20px;
+$tablet-spacing: 40px;
+$desktop-spacing: 60px;
+
+.movie-grid {
+  width: calc(100% - (#{$mobile-margin} * 2));
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  margin: $mobile-spacing auto;
+  color: black;
+  padding: $mobile-spacing;
+  box-sizing: border-box;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.5);
+
+  @include for-size(tablet) {
+    width: calc(100% - (#{$tablet-margin} * 2));
+    margin: $tablet-spacing auto;
+  }
+
+  @include for-size(desktop) {
+    width: calc(100% - (#{$desktop-margin-sm} * 2));
+    margin: $desktop-spacing auto;
+  }
+
+  @include for-size(desktop-lg) {
+    width: calc(100% - (#{$desktop-margin-lg} * 2));
+  }
+
+  &__container {
+    width: 100%;
+    > h2 {
+      text-align: center;
+    }
+  }
+
+  &__card {
+    width: 100%;
+    box-sizing: border-box;
+    padding-left: 0;
+    padding-right: 0;
+    margin-bottom: $mobile-spacing;
+
+    @include for-size(phone-sm) {
+      width: 50%;
+      padding-left: 5px;
+      padding-right: 5px;
+    }
+
+    @include for-size(tablet) {
+      width: 33.33%;
+    }
+
+    @include for-size(desktop) {
+      width: 25%;
+      padding-left: 7px;
+      padding-right: 7px;
+    }
+
+    > img {
+      background-size: cover;
+      width: 100%;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+        0 2px 4px -1px rgba(0, 0, 0, 0.5);
+    }
+  }
+}
