@@ -1,0 +1,19 @@
+@import "../../utils/scss/index.scss";
+
+.rating-filter {
+  height: 40px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+
+  &__star {
+    outline: none;
+    &-full {
+      fill: $gold;
+    }
+    &-outline {
+      fill: $grey-1;
+    }
+  }
+}
