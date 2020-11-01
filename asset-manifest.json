@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/static/css/main.b3557786.chunk.css",
+    "main.js": "/static/js/main.9fd8cbdc.chunk.js",
+    "main.js.map": "/static/js/main.9fd8cbdc.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.420a67de.js",
+    "runtime-main.js.map": "/static/js/runtime-main.420a67de.js.map",
+    "static/js/2.cf50e3dd.chunk.js": "/static/js/2.cf50e3dd.chunk.js",
+    "static/js/2.cf50e3dd.chunk.js.map": "/static/js/2.cf50e3dd.chunk.js.map",
+    "static/js/3.dea263a8.chunk.js": "/static/js/3.dea263a8.chunk.js",
+    "static/js/3.dea263a8.chunk.js.map": "/static/js/3.dea263a8.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.b3557786.chunk.css.map": "/static/css/main.b3557786.chunk.css.map",
+    "static/js/2.cf50e3dd.chunk.js.LICENSE.txt": "/static/js/2.cf50e3dd.chunk.js.LICENSE.txt",
+    "static/media/missing-back.fddbe8d0.png": "/static/media/missing-back.fddbe8d0.png",
+    "static/media/missing-img.4ef10744.png": "/static/media/missing-img.4ef10744.png",
+    "static/media/App.scss": "/static/media/roboto-v20-latin-regular.4f862c8b.svg",
+    "static/media/rock-icon.0d30899b.svg": "/static/media/rock-icon.0d30899b.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.420a67de.js",
+    "static/js/2.cf50e3dd.chunk.js",
+    "static/css/main.b3557786.chunk.css",
+    "static/js/main.9fd8cbdc.chunk.js"
+  ]
+}
