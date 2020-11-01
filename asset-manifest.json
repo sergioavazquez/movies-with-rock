@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/movies-with-rock/static/css/main.ccdbeb5d.chunk.css",
-    "main.js": "/movies-with-rock/static/js/main.9fd8cbdc.chunk.js",
-    "main.js.map": "/movies-with-rock/static/js/main.9fd8cbdc.chunk.js.map",
+    "main.css": "/movies-with-rock/static/css/main.4ff1d0ab.chunk.css",
+    "main.js": "/movies-with-rock/static/js/main.0b2704da.chunk.js",
+    "main.js.map": "/movies-with-rock/static/js/main.0b2704da.chunk.js.map",
     "runtime-main.js": "/movies-with-rock/static/js/runtime-main.dee7c55b.js",
     "runtime-main.js.map": "/movies-with-rock/static/js/runtime-main.dee7c55b.js.map",
     "static/js/2.cf50e3dd.chunk.js": "/movies-with-rock/static/js/2.cf50e3dd.chunk.js",
@@ -10,7 +10,7 @@
     "static/js/3.dea263a8.chunk.js": "/movies-with-rock/static/js/3.dea263a8.chunk.js",
     "static/js/3.dea263a8.chunk.js.map": "/movies-with-rock/static/js/3.dea263a8.chunk.js.map",
     "index.html": "/movies-with-rock/index.html",
-    "static/css/main.ccdbeb5d.chunk.css.map": "/movies-with-rock/static/css/main.ccdbeb5d.chunk.css.map",
+    "static/css/main.4ff1d0ab.chunk.css.map": "/movies-with-rock/static/css/main.4ff1d0ab.chunk.css.map",
     "static/js/2.cf50e3dd.chunk.js.LICENSE.txt": "/movies-with-rock/static/js/2.cf50e3dd.chunk.js.LICENSE.txt",
     "static/media/missing-back.fddbe8d0.png": "/movies-with-rock/static/media/missing-back.fddbe8d0.png",
     "static/media/missing-img.4ef10744.png": "/movies-with-rock/static/media/missing-img.4ef10744.png",
@@ -20,7 +20,7 @@
   "entrypoints": [
     "static/js/runtime-main.dee7c55b.js",
     "static/js/2.cf50e3dd.chunk.js",
-    "static/css/main.ccdbeb5d.chunk.css",
-    "static/js/main.9fd8cbdc.chunk.js"
+    "static/css/main.4ff1d0ab.chunk.css",
+    "static/js/main.0b2704da.chunk.js"
   ]
 }
