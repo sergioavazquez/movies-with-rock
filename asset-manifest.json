@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/movies-with-rock/static/css/main.9856c521.chunk.css",
-    "main.js": "/movies-with-rock/static/js/main.4f893ae6.chunk.js",
-    "main.js.map": "/movies-with-rock/static/js/main.4f893ae6.chunk.js.map",
+    "main.js": "/movies-with-rock/static/js/main.85472eb2.chunk.js",
+    "main.js.map": "/movies-with-rock/static/js/main.85472eb2.chunk.js.map",
     "runtime-main.js": "/movies-with-rock/static/js/runtime-main.dee7c55b.js",
     "runtime-main.js.map": "/movies-with-rock/static/js/runtime-main.dee7c55b.js.map",
     "static/js/2.cf50e3dd.chunk.js": "/movies-with-rock/static/js/2.cf50e3dd.chunk.js",
@@ -21,6 +21,6 @@
     "static/js/runtime-main.dee7c55b.js",
     "static/js/2.cf50e3dd.chunk.js",
     "static/css/main.9856c521.chunk.css",
-    "static/js/main.4f893ae6.chunk.js"
+    "static/js/main.85472eb2.chunk.js"
   ]
 }
