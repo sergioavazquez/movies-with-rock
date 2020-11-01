@@ -21,7 +21,11 @@ const renderRoutes = withRouter(() => {
   const Paths = paths ?? defaultPaths;
   return (
     <Switch>
-      <Route exact path={Paths.ROOT} render={() => <SinglePageApp />} />
+      <Route
+        exact
+        path={process.env.PUBLIC_URL + Paths.ROOT}
+        render={() => <SinglePageApp />}
+      />
       <Route
         path={Paths.NOT_FOUND}
         component={() => (

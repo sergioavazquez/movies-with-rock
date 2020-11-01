@@ -32,7 +32,7 @@ const MovieDetails: React.FC<Props> = ({ movie, close }) => {
       if (movie.backdrop_path) {
         // imgSize should be chosen according to screen dpi/size.
         const imgSize = apiConfig?.images.poster_sizes[5];
-        imgSrc = `${apiConfig?.images.base_url}${imgSize}${movie.backdrop_path}`;
+        imgSrc = `${apiConfig?.images.secure_base_url}${imgSize}${movie.backdrop_path}`;
       }
       content = (
         <>

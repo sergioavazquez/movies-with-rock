@@ -43,7 +43,7 @@ const MovieGrid: React.FC<Props> = ({
       if (m.poster_path) {
         // imgSize should be chosen according to screen dpi/size.
         const imgSize = apiConfig?.images.poster_sizes[3];
-        imgSrc = `${apiConfig?.images.base_url}${imgSize}${m.poster_path}`;
+        imgSrc = `${apiConfig?.images.secure_base_url}${imgSize}${m.poster_path}`;
       }
       return (
         <button
