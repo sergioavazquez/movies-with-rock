@@ -18,7 +18,7 @@ const Header: React.FC<Props> = ({ search }) => {
     <header className={css[`${block}`]}>
       <div className={css[`${block}__brand`]}>
         <Logo />
-        <span>M.T.R.</span>
+        <span>M.W.R.</span>
       </div>
       <div className={css[`${block}__search`]}>
         <input placeholder="Search..." onChange={(e) => handleSearch(e)} />

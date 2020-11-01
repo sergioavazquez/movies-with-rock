@@ -2,7 +2,7 @@
 
 .spa {
   padding-bottom: $mobile-margin;
-  background: linear-gradient(to top, $grey-2, $grey-1);
+  background: linear-gradient(to top, $grey-2, $light-blue);
   min-height: 100vh;
   @include for-size(tablet) {
     padding-bottom: $tablet-margin;
