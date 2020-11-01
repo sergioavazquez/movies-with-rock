@@ -1,7 +1,0 @@
-{
-  "apiKey": "",
-  "paths": {
-    "ROOT": "/",
-    "NOT_FOUND": "/404"
-  }
-}

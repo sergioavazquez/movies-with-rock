@@ -6,20 +6,19 @@ import {
   withRouter,
   BrowserRouter as Router,
 } from "react-router-dom";
-
+import { getConfig } from "utils";
 import { ErrorScreen } from "components/notifications";
 import SinglePageApp from "components/SinglePageApp";
-// import { Config } from "models/system";
 
 const defaultPaths = {
   ROOT: "/",
   NOT_FOUND: "/404",
 };
 
+const { paths } = getConfig();
+
 const renderRoutes = withRouter(() => {
-  // const paths = useSelector(selectRoutes);
-  // const Paths = paths !== null ? paths : defaultPaths;
-  const Paths = defaultPaths;
+  const Paths = paths ?? defaultPaths;
   return (
     <Switch>
       <Route exact path={Paths.ROOT} render={() => <SinglePageApp />} />
@@ -34,21 +33,8 @@ const renderRoutes = withRouter(() => {
   );
 });
 
-interface RoutesProps {
-  // config: Config | null;
-  location?: string;
-}
-
-const Routes = ({ location }: RoutesProps) => {
-  // if (!config) {
-  //   return <></>;
-  // }
-  return <Router>{new renderRoutes({ location })}</Router>;
-};
-
-Routes.defaultProps = {
-  // config: {},
-  location: null,
+const Routes = () => {
+  return <Router>{new renderRoutes({})}</Router>;
 };
 
 export default Routes;

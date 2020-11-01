@@ -1,3 +1,7 @@
 export interface Config {
-  apiKey: string;
+  api_root: string;
+  bearer_token: string;
+  paths?: {
+    [path: string]: string;
+  };
 }

@@ -9,12 +9,21 @@ import { GlobalState } from "redux/reducers";
 import Routes from "routes";
 import "App.scss";
 
-class App extends Component<AppProps, {}> {
+class App extends Component<AppProps, AppState> {
+  constructor(props: AppProps | Readonly<AppProps>) {
+    super(props);
+    this.state = { boundaryError: false };
+  }
+
   static defaultProps = { appReducer: {} };
 
   componentDidMount() {
     const { initApp } = this.props;
     initApp(getConfig() as Config);
+  }
+
+  static getDerivedStateFromError() {
+    return { boundaryError: true };
   }
 
   componentDidCatch(error: Error, errorInfo: object) {
@@ -24,12 +33,16 @@ class App extends Component<AppProps, {}> {
 
   render() {
     const { mainError } = this.props;
+    const { boundaryError } = this.state;
+
     let appRender;
-    if (mainError.code) {
-      appRender = <ErrorScreen error={mainError} />;
+    if (mainError.code || boundaryError) {
+      const error = boundaryError
+        ? { code: "400", errorMsg: "Ups..." }
+        : mainError;
+      appRender = <ErrorScreen error={error} />;
     } else {
-      // appRender = Routes({ config });
-      appRender = Routes({});
+      appRender = Routes();
     }
     return <div className="app">{appRender}</div>;
   }
@@ -62,6 +75,10 @@ type PropsFromRedux = ConnectedProps<typeof connector>;
 
 type AppProps = PropsFromRedux & {
   appReducer: any;
+};
+
+type AppState = {
+  boundaryError: boolean;
 };
 
 export default connector(App);

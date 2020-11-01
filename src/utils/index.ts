@@ -1,15 +1,25 @@
-import config from "static/config/config.json";
+import { config } from "static/config/config";
+import { config as devConfig } from "static/config/config.dev";
+import { Config } from "models/system";
 
 export const isDevelopmentMode = () => {
   return process.env.NODE_ENV === "development";
 };
 
-export const getConfig = () => {
-  // Sometimes there are multiple configs, for development for example.
-  // This method helps returning the approriate config, in this case it's just one.
-  return config;
+/**
+ * Sometimes there are multiple configs. In this case it's the same.
+ * This method helps returning the approriate config, in this case it's just one.
+ */
+export const getConfig = (): Config => {
+  return isDevelopmentMode() ? devConfig : config;
 };
 
+/**
+ * This helps centralize logs while while keeping them dev only.
+ * @param txt
+ */
 export const log = (txt: string): void => {
-  console.log(txt);
+  if (isDevelopmentMode()) {
+    console.log(txt);
+  }
 };

@@ -1,9 +1,12 @@
 import { GlobalState } from "redux/reducers";
-// import { Config } from "models/system";
+import { Config } from "models/system";
 import { MovieList, ApiConfig } from "models/moviedb";
 
 export const selectMovieList = (state: GlobalState): MovieList | null =>
   state.appReducer.movieList;
+
+export const selectConfig = (state: GlobalState): Config | null =>
+  state.appReducer.config;
 
 export const selectApiConfig = (state: GlobalState): ApiConfig | null =>
   state.appReducer.apiConfig;
