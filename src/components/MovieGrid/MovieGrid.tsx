@@ -47,6 +47,7 @@ const MovieGrid: React.FC<Props> = ({
       }
       return (
         <button
+          aria-label={"open details"}
           className={css[`${block}__card`]}
           key={m.id}
           onClick={() => {

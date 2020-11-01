@@ -6,6 +6,7 @@ $primary-font: "Roboto", "Segoe UI", "Oxygen", "Ubuntu", "Cantarell",
   font-family: "Roboto";
   font-style: normal;
   font-weight: 100;
+  font-display: swap;
   src: local("Roboto Thin"), local("Roboto-Thin"),
     url("../../static/fonts/roboto-v20-latin-100.woff2") format("woff2"),
     /* Super Modern Browsers */
@@ -20,6 +21,7 @@ $primary-font: "Roboto", "Segoe UI", "Oxygen", "Ubuntu", "Cantarell",
   font-family: "Roboto";
   font-style: normal;
   font-weight: 400;
+  font-display: swap;
   src: local("Roboto"), local("Roboto-Regular"),
     url("../../static/fonts/roboto-v20-latin-regular.woff2") format("woff2"),
     /* Super Modern Browsers */
@@ -35,6 +37,7 @@ $primary-font: "Roboto", "Segoe UI", "Oxygen", "Ubuntu", "Cantarell",
   font-family: "Roboto";
   font-style: normal;
   font-weight: 900;
+  font-display: swap;
   src: local("Roboto Black"), local("Roboto-Black"),
     url("../../static/fonts/roboto-v20-latin-900.woff2") format("woff2"),
     /* Super Modern Browsers */

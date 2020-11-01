@@ -77,6 +77,7 @@ const MovieDetails: React.FC<Props> = ({ movie, close }) => {
       <div className={mainClass.join(" ")}>
         <div className={css[`${block}__card`]}>
           <button
+            aria-label={"close"}
             onClick={() => {
               close();
             }}

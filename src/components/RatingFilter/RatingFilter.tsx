@@ -25,6 +25,7 @@ const RatingFilter: React.FC<Props> = ({ onFilterClick, filterStatus }) => {
     <div className={css[`${block}`]}>
       {[1, 2, 3, 4, 5].map((s) => (
         <button
+          aria-label={"rating filter"}
           key={s}
           onClick={() => onStarClick(s)}
           className={css[`${block}__star`]}
