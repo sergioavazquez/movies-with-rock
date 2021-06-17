@@ -13,12 +13,11 @@ import css from "./spa.module.scss";
 const block = "spa";
 
 const SinglePageApp = () => {
-  const [ratingFilterStatus, setRatingFilterStatus] = useState<
-    RatingFilterState
-  >({
-    active: false,
-    stars: 5,
-  });
+  const [ratingFilterStatus, setRatingFilterStatus] =
+    useState<RatingFilterState>({
+      active: false,
+      stars: 5,
+    });
   const [movieDetail, setMovieDetail] = useState<Movie | null>(null);
   const [movieQuery, setMovieQuery] = useState("");
   const dispatch = useDispatch();

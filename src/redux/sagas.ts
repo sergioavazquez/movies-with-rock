@@ -2,7 +2,7 @@ import { SagaIterator } from "redux-saga";
 import { spawn, call, all } from "redux-saga/effects";
 import { appSaga } from "redux/app/sagas";
 
-const sagas = [appSaga]; // This approach allows running several independet sagas.
+const sagas = [appSaga]; // This approach allows running several independent sagas.
 export default function* root(): SagaIterator {
   yield all(
     sagas.map((saga) =>

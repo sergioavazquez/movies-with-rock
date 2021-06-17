@@ -9,8 +9,7 @@ module.exports = {
     "eslint:recommended", // Use the recommened rules from eslint
     "plugin:@typescript-eslint/recommended", // Use the recommended rules from @typescript-eslint/eslint-plugin
     "plugin:react/recommended", // Use the recommended rules from eslint-plugin-react
-    "prettier/@typescript-eslint", // Use eslint-config-prettier to disable ESLint formatting rules from @typescript-eslint/eslint-plugin that would conflict with Prettier
-    "prettier/react", // Use eslint-config-prettier to disable ESLint formatting rules from eslint-plugin-react that would conflict with with Prettier
+    "prettier",
     "plugin:prettier/recommended", // Enables eslint-plugin-prettier to display Prettier errors as ESLint errors
   ],
   parser: "@typescript-eslint/parser", // Specifies the ESLint parser
